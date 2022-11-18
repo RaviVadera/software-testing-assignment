@@ -1,0 +1,37 @@
+name: Build and Test
+
+on:
+  - push
+
+jobs:
+  build-test:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Checkout Utility Library
+        uses: actions/checkout@v3
+        with:
+          repository: https://github.com/otula/COMP.SE.200-2022-2023-1.git
+          path: util-lib
+      
+      - name: Copy Source Files from Library
+        run: |-
+          mkdir src
+          cp util-lib/src/** src/**
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
+          cache: npm
+      
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Test
+        run: npm test
+
+      - name: Coveralls Reporting
+        uses: coverallsapp/github-action@1.1.3
