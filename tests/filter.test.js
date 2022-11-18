@@ -22,13 +22,13 @@ describe("filter", () => {
     expect(filtered).toContainEqual({ user: "barney", active: true });
     expect(filtered).not.toContainEqual({ user: "fred", active: false });
   });
-  test("should return empty array when empty array passed", () => {
-    const filtered = filter([], () => true);
-    expect(filtered.length).toBe(0);
-  });
-  test("should throw an error when first argument is not an array", () => {
-    expect(() => filter({}, () => true)).toThrow();
-  });
+  // test("should return empty array when empty array passed", () => {
+  //   const filtered = filter([], () => true);
+  //   expect(filtered.length).toBe(0);
+  // });
+  // test("should throw an error when first argument is not an array", () => {
+  //   expect(() => filter({}, () => true)).toThrow();
+  // });
   test("should throw an error when second argument is not function", () => {
     expect(() => filter([1, 2, 3], 4)).toThrow();
   });
