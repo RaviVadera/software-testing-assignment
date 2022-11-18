@@ -19,7 +19,7 @@ jobs:
       - name: Copy Source Files from Library
         run: |-
           mkdir src
-          cp util-lib/src/** src/**
+          cp util-lib/src/** src/
 
       - name: Setup Node
         uses: actions/setup-node@v3
