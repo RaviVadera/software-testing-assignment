@@ -19,9 +19,14 @@ describe("get", () => {
     const defaultValue = 9;
     expect(get(someObject, ["a", "2", "4"], defaultValue)).toBe(defaultValue);
   });
+  test("should return default value when path is undefined", () => {
+    const someObject = {"a": {"1": [3, 4, 5], "2": "two"}};
+    const defaultValue = 9;
+    expect(get(someObject, undefined, defaultValue)).toBe(defaultValue);
+  });
   test("should return array when path resolves to it", () => {
     const someObject = {"a": {"1": [3, 4, 5], "2": "two"}};
     const defaultValue = 9;
-    expect(get(someObject, "a.1", defaultValue)).toBe([3, 4, 5]);
+    expect(get(someObject, "a.1", defaultValue)).toStrictEqual([3, 4, 5]);
   });
 });
