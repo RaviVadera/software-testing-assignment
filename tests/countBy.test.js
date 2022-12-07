@@ -2,7 +2,7 @@ import countBy from "../src/countBy";
 
 describe("countBy", () => {
   test("should return an object", () => {
-    expect(typeof countBy([4, 5, 6], (e) => e > 4)).toBe(Object);
+    expect(typeof countBy([4, 5, 6], (e) => e > 4)).toBe("object");
   });
   test("should return object with composed aggregates", () => {
     const flowers = [
@@ -17,7 +17,7 @@ describe("countBy", () => {
       flower.name.charAt(0)
     );
 
-    expect(flowersByFirstLetter).toEqual({ d: 2, s: 1, r: 1, o: 1 });
+    expect(flowersByFirstLetter).toMatchObject({ d: 2, s: 1, r: 1, o: 1 });
   });
   test("should invoke the iteratee function 5 times", () => {
     const flowers = [
