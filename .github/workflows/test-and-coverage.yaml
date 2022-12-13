@@ -21,7 +21,7 @@ jobs:
       - name: Copy Source Files from Library
         run: |-
           mkdir -p workspace/src
-          cp util-lib/src/** workspace/src/
+          cp -R util-lib/src/* workspace/src/
 
       - name: Setup Node
         uses: actions/setup-node@v3
