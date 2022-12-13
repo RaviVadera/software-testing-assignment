@@ -29,6 +29,7 @@ jobs:
         with:
           node-version: 14.x
           cache: npm
+          cache-dependency-path: workspace/package-lock.json
       
       - name: Install Dependencies
         run: |-
