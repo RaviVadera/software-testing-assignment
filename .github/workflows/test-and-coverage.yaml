@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+        with:
+          path: workspace
 
       - name: Checkout Utility Library
         uses: actions/checkout@v3
@@ -18,8 +20,9 @@ jobs:
       
       - name: Copy Source Files from Library
         run: |-
-          mkdir src
-          cp util-lib/src/** src/
+          mkdir -p workspace/src
+          cp util-lib/src/** workspace/src/
+          cd workspace
 
       - name: Setup Node
         uses: actions/setup-node@v3
@@ -28,10 +31,14 @@ jobs:
           cache: npm
       
       - name: Install Dependencies
-        run: npm install
+        run: |-
+          pwd 
+          npm install
 
       - name: Test
-        run: npm test
+        run: |-
+          pwd
+          npm test
 
       - name: Coveralls Reporting
         uses: coverallsapp/github-action@1.1.3
