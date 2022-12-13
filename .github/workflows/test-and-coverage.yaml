@@ -43,4 +43,4 @@ jobs:
         uses: coverallsapp/github-action@1.1.3
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          base-path: workspace
+          path-to-lcov: workspace/coverage/lcon.info
