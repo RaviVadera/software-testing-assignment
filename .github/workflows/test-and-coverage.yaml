@@ -41,6 +41,10 @@ jobs:
 
       - name: Coveralls Reporting
         uses: coverallsapp/github-action@1.1.3
+        id: coverage_report
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           path-to-lcov: workspace/coverage/lcov.info
+      
+      - name: Print Coveralls Result
+        run: echo '${{ steps.coverage_report.outputs.coveralls-api-result }}'
