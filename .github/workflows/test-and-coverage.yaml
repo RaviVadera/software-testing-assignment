@@ -39,13 +39,26 @@ jobs:
         working-directory: workspace
         continue-on-error: true
 
+      - name: Upload Coverage Report Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-coverage-report
+          path: workspace/coverage/
+
+  coverage:
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: Down Coverage Report Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: test-coverage-report
+          path: coverage
+
       - name: Coveralls Reporting
         uses: coverallsapp/github-action@master
         id: coverage_report
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          base-path : ./workspace/
-          path-to-lcov: ./workspace/coverage/lcov.info
       
       - name: Print Coveralls Result
         run: echo '${{ steps.coverage_report.outputs.coveralls-api-result }}'
