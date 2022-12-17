@@ -16,6 +16,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: otula/COMP.SE.200-2022-2023-1
+          ref: f624de44c3757995bd3af3594ceca9bcc3154f31
           path: util-lib
       
       - name: Copy Source Files from Library
