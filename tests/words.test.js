@@ -7,6 +7,12 @@ describe("words", () => {
 
     expect(Array.isArray(result)).toBe(true);
   });
+  test("should return an array for unicode", () => {
+    const sentence = "A 🐕 is a 🚶's best friend.";
+    const result = words(sentence);
+    console.log(result);
+    expect(Array.isArray(result)).toBe(true);
+  });
   test("should return an array with words from the passed string", () => {
     const sentence = "This is just a sentence";
     const result = words(sentence);
@@ -39,5 +45,13 @@ describe("words", () => {
     expect(result).toContain(":)");
 
     expect(result.length).toBe(6);
+  });
+  test("should return empty array when no matches are found", () => {
+    const sentence = "hello world";
+    const regex = /test/g;
+    const result = words(sentence, regex);
+
+    expect(Array.isArray(result)).toBe(true);
+    expect(result.length).toBe(0);
   });
 });

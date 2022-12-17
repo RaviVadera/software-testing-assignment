@@ -14,6 +14,11 @@ describe("get", () => {
     const defaultValue = 9;
     expect(get(someObject, ["a", "2", "4"], defaultValue)).toBe(defaultValue);
   });
+  test("should return default value when object is null", () => {
+    const someObject = null;
+    const defaultValue = 9;
+    expect(get(someObject, ["a", "2", "4"], defaultValue)).toBe(defaultValue);
+  });
   test("should return default value when object is empty", () => {
     const someObject = {};
     const defaultValue = 9;

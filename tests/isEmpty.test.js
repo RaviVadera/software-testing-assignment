@@ -32,7 +32,32 @@ describe("isEmpty", () => {
     expect(isEmpty(nonEmptyString)).toBe(false);
   });
   test("should return false on non empty object", () => {
-    const nonEmptyObject = {"name": "something"};
+    const nonEmptyObject = { name: "something" };
     expect(isEmpty(nonEmptyObject)).toBe(false);
+  });
+  test("should return false on object", () => {
+    expect(
+      isEmpty({
+        test: "should pass",
+      })
+    ).toBe(false);
+  });
+  test("should return true on empty prototype object", () => {
+    const personPrototype = {};
+    function Person() {}
+    Object.assign(Person.prototype, personPrototype);
+    expect(isEmpty(Person.prototype)).toBe(true);
+  });
+  test("should return true on typed array", () => {
+    expect(isEmpty(new Uint8Array())).toBe(true);
+  });
+  test("should return true on arguments", () => {
+    expect(
+      isEmpty(
+        (function () {
+          return arguments;
+        })()
+      )
+    ).toBe(true);
   });
 });

@@ -1,3 +1,4 @@
 {
+    "collectCoverage": true,
     "coveragePathIgnorePatterns": [ "<rootDir>/node_modules/", "<rootDir>/src/.internal/" ]
 }

@@ -30,6 +30,11 @@ describe("reduce", () => {
     const sum = (a, b) => a + b;
     expect(reduce(collection, sum, 0)).toBe(2 + 5 + 8 + 9);
   });
+  test("should reduce object correctly", () => {
+    const person = { firstName: "John", lastName: "Smith" };
+    const toString = (result, value, key) => result += `${key}: ${value}; `;
+    expect(reduce(person, toString, "")).toBe("firstName: John; lastName: Smith; ");
+  });
   test("should use first element of array as initial value when init value not provided", () => {
     const collection = [2, 5, 8, 9];
     const sum = (a, b) => a + b;

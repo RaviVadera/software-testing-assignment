@@ -37,6 +37,13 @@ describe("map", () => {
     expect(Array.isArray(result)).toBe(true);
     expect(result.length).toBe(0);
   });
+  test("should return an empty array when null passed", () => {
+    const addTwo = (x) => x + 2;
+    const numbers = null;
+    const result = map(numbers, addTwo);
+    expect(Array.isArray(result)).toBe(true);
+    expect(result.length).toBe(0);
+  });
   test("should throw an error when iteratee not a function", () => {
     const numbers = [3, 6, 9];
     expect(() => map(numbers, undefined)).toThrow();
