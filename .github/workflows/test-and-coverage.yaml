@@ -44,7 +44,7 @@ jobs:
         id: coverage_report
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          path-to-lcov: workspace/coverage/lcov.info
+          base-path : workspace/
       
       - name: Print Coveralls Result
         run: echo '${{ steps.coverage_report.outputs.coveralls-api-result }}'
